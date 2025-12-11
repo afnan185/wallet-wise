@@ -11,31 +11,38 @@ export const AddExpense = () => {
                 </Link>
                 <h1 className="text-center font-medium pt-4">Add Expense</h1>
             </div>
-            <div className="pl-4 pr-4 pt-5">
-                <label className="font-bold">Amount</label> 
-                <br></br>
-                <input type="text" placeholder="$0.00" className="border border-grey-300 py-1 px-2 leading-relaxed rounded-sm w-full border"/>
-            </div>
-            <div className="pl-4 pr-4 pt-5 ">
-                <label className="font-bold">Description</label> 
-                <br></br>
-                <input type="text" placeholder="Dinner with Friends" 
-                className="border border-grey-300 py-1 px-2 leading-relaxed rounded-sm w-full border"/>
-            </div>
-            <div className="pl-4 pr-4 pt-5">
-                <label className="font-bold">Paid by</label> 
-                <br></br>
-                <input type="text" placeholder="Friend's names" className="border border-grey-300 py-1 px-2 leading-relaxed rounded-sm w-full border"/>
-            </div>
-            <div className="fixed inset-x-0 bottom-5 w-full pl-4 pr-4 ">
+           <div className="pl-4 pr-4 pt-5">
+                <label className="font-bold block mb-2">Amount</label>
+                <input
+                    type="text"
+                    className="w-full max-w-md rounded-xl border border-[#DEDEDE] bg-white p-4"
+                    placeholder="$0.00"
+                />
+                </div>
+                <div className="pl-4 pr-4 pt-5">
+                <label className="font-bold block mb-2">Description</label>
+                <input
+                    type="text"
+                    className="w-full max-w-md rounded-xl border border-[#DEDEDE] bg-white p-4"
+                    placeholder="Dinner with Friends"
+                />
+                </div>
+                <div className="pl-4 pr-4 pt-5">
+                <label className="font-bold block mb-2">Paid by</label>
+                <input
+                    type="text"
+                    className="w-full max-w-md rounded-xl border border-[#DEDEDE] bg-white p-4 mb-70"
+                    placeholder="Friend's names"
+                />
+                </div>
+                <div className="flex justify-center">
                 <Button 
-                    className="items-center bg-[#3A7FE5] text-white rounded font-bold w-full "
+                    className="flex items-center gap-2 bg-[#3A7FE5] text-white px-4 py-2 rounded font-bold"
                     name="Add Expense"
                     variant="ho"
                     isActive={true}
-                    onClick={() => console.log("Button Click Success!")} route={""}                />
+                    onClick={() => console.log("Button Click Success!")} route={""}   />
+                 </div>   
             </div>
-        </div>
-        
     )
 }

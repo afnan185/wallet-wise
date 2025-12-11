@@ -2,10 +2,12 @@ import { Form } from "./components/groups-overview/Forms";
 import { Button } from "./components/groups-overview/Buttons";
 import { List } from "./components/groups-overview/List"
 import { Plus } from "lucide-react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { CreateNewGroup } from "./pages/createNewGroup";
 import { GroupTripDetails } from "./pages/groupTripDetails";
 import { AddExpense } from "./pages/addExpense";
+import { Expenses } from "./pages/expenses";
+import { Balances } from "./pages/balances";
 
 const FirstPage = () => {
   return (
@@ -61,7 +63,11 @@ function App() {
           <Routes>
             <Route path="/create-adventure" element={<CreateNewGroup />}/>
             <Route path="/" element={<FirstPage/>}/>
-            <Route path="/trip-name" element={<GroupTripDetails/>} />
+            <Route path="/trip-name" element={<GroupTripDetails/>}>
+              <Route index element={<Navigate to="expenses" replace />} />
+              <Route path="expenses" element={<Expenses />} />
+              <Route path="balances" element={<Balances />} />
+            </Route>
             <Route path="/adventure-details" element={<AddExpense/>}/>
           </Routes>
       </BrowserRouter>
