@@ -1,3 +1,25 @@
+ May need to install the following: 
+ 
+ "dependencies": {
+    "lucide-react": "^0.561.0",
+    "react-router-dom": "^7.10.1"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Below is automaticaly compiled with the running of 
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
