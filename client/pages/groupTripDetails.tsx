@@ -1,6 +1,6 @@
-import { List } from '../components/List';
-import { Button } from '../components/Buttons';
-import { ChevronLeft, Plus } from 'lucide-react';
+import { List } from '../src/components/List';
+import { Button } from '../src/components/Buttons';
+import { ChevronLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 //do we also have to think about state here? ... or are we fine with hardcoding info?

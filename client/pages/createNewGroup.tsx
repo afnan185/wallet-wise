@@ -1,5 +1,5 @@
 import { Link } from  'react-router-dom';
-import { Button } from '../components/Buttons';
+import { Button } from '../src/components/Buttons';
 import { ChevronLeft, Plus } from 'lucide-react';
 
 //do we need to input state here since we're taking in data? - esm
