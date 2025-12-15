@@ -1,5 +1,5 @@
-import { List } from '../components/groups-overview/List';
-import { Button } from '../components/groups-overview/Buttons';
+import { List } from '../components/List';
+import { Button } from '../components/Buttons';
 import { ChevronLeft, Plus } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -12,7 +12,7 @@ export const GroupTripDetails = () => {
         <Link to='/create-group'>
           <ChevronLeft />
         </Link>
-        <List title='Trip to Paris' subtitle='4 members' />
+        <List title='Trip to Paris' subtitle='4 members' amount={0} />
       </div>
       {/* //how do we make this so that it autopopulates with the group name that already exists? */}
       <div>
@@ -21,15 +21,13 @@ export const GroupTripDetails = () => {
           name='Expenses'
           variant='ho'
           isActive={true}
-          onClick={() => console.log('Button Click Success!')}
-        />
+          onClick={() => console.log('Button Click Success!')} route={''}        />
         <Button
           className='flex items-center gap-2 bg-[#3A7FE5] text-white px-4 py-2 rounded font-bold'
           name='Balances'
           variant='ho'
           isActive={true}
-          onClick={() => console.log('Button Click Success!')}
-        />
+          onClick={() => console.log('Button Click Success!')} route={''}        />
         {/* by clicking on balances will we route to a new page toe list balance info?... more routing required? And should another page be -esm */}
       </div>
       <div>

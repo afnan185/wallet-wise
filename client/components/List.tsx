@@ -9,7 +9,7 @@ interface ListProps {
     amount: number;
 }
 
-export const List = ({title, subtitle, amount}: ListProps) => {
+export const List = ({ title, subtitle, amount }: ListProps) => {
     return(
         <div className="flex justify-between items-center rounded-[10px] border border-[#DEDEDE] bg-white text-black w-80 h-15 p-2 font-semibold ">
             <div>

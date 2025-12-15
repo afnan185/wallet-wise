@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import { Button } from '../components/groups-overview/Buttons';
+import { Link } from  'react-router-dom';
+import { Button } from '../components/Buttons';
 import { ChevronLeft, Plus } from 'lucide-react';
 
 //do we need to input state here since we're taking in data? - esm
@@ -18,7 +18,8 @@ export const CreateNewGroup = () => {
         <h1 className='text-center font-semibold'>Create a New Group Trip</h1>
       </div>
       <label>Trip Name</label> <br></br>
-      <input type='text' placeholder='' />
+      <input type='text' placeholder="What's the adventure?" />
+      {/* this input needs to grab user input for Trip name, neesds an onchange. Ex. onChange ={setTrip(e.target.value)} */}
       <Button
         className='flex items-center gap-2 bg-[#3A7FE5] text-white px-4 py-2 rounded font-bold'
         name='Create New Group'
