@@ -3,29 +3,35 @@ import { Request, Response, NextFunction } from 'express';
 
 const balanceController = {
     // we are handeling GET
-    async getBalancesByTrip(req: Request, res: Response, next: NextFunction): Promise<void> {
+    async getBalanceByTrip(req: Request, res: Response, next: NextFunction): Promise<void> {
+        console.log('controller hit!')
         try {
             //we should exract tripID for GET req, req.params = {tripId: '123'}
-            const { tripId } = req.params;
+            console.log(1)
+             const { trip_id } = req.params;
             //trip balance table query supabase
-            const {data, error} = await supabase
+            console.log(2)
+             const {data, error} = await supabase
             //choose which table to query
-            .from('TripBalance')
+            .from('Balance')
 
             //select all columns from match rows
             .select('*')
 
             //only return rows where trip_id matches tripID
-            .eq('tripId', tripId);
+            .eq('tripId', trip_id);
 
             //error handling
-            if (error) return next(error);
+            console.log(3)
+             if (error) return next(error);
             
             
             //send back data as json response
-            res.status(200).json(data);
+            console.log(4)
+             res.status(200).json(data);
+             res.locals.balances = data;
+             return next()
         }
-        // res.locals.balances = data;
         catch (error) {
             console.error('Unexpected error:', error);
             res.status(500).json({ message: 'Internal server error' });

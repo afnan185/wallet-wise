@@ -31,7 +31,7 @@ const expenseController = {
         }
         
         
-    }
+    },
 
      async getExpense(req : Request, res : Response, next : NextFunction){
        // when creating an expense we may need to think about how the expense was divided (i.e who owes what)

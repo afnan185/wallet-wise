@@ -7,7 +7,7 @@ const BalanceRouter = express.Router();
 //GET /api/balances/:tripId
 
  BalanceRouter .get('/:tripId', balanceController.getBalanceByTrip, (req, res) => {
-  return res.status(200).json(res.locals.balance);
+  return res.status(200).json(res.locals.balances);
 });
 
 //settle balances for a trip
