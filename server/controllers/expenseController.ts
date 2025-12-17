@@ -6,23 +6,23 @@ const expenseController = {
     async createExpense(req : Request, res : Response, next : NextFunction){
        // when creating an expense we may need to think about how the expense was divided (i.e who owes what)
         try{
-            const { trip_id, total, paid_by, created_at} = req.body;
+            const { trip_id, total, paid_by} = req.body;
 
             //ensure that all fields are filled out
 
-            if(!trip_id || !total || !paid_by || !created_at){
+            if(!trip_id || !total || !paid_by){
                 return res.status(400).json(`Missing Field. All fields are required!`)
             }
     
             const {data, error} = await supabase
             .from("Expense")
-            .insert ([{trip_id, total, paid_by, created_at}])
+            .insert ([{trip_id, total, paid_by}])
             .select()
             .single();
 
             if(error) return next(error);
 
-            res.locals.createExpense = data;
+            res.locals.createdExpense = data;
 
             return next();
 

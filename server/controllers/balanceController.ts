@@ -8,7 +8,7 @@ const balanceController = {
         try {
             //we should exract tripID for GET req, req.params = {tripId: '123'}
             console.log(1)
-             const { trip_id } = req.params;
+             const { tripId } = req.params;
             //trip balance table query supabase
             console.log(2)
              const {data, error} = await supabase
@@ -19,7 +19,7 @@ const balanceController = {
             .select('*')
 
             //only return rows where trip_id matches tripID
-            .eq('tripId', trip_id);
+            .eq('Expense.trip_id', tripId);
 
             //error handling
             console.log(3)
@@ -27,8 +27,8 @@ const balanceController = {
             
             
             //send back data as json response
-            console.log(4)
-             res.status(200).json(data);
+            // console.log(4)
+            //  res.status(200).json(data);
              res.locals.balances = data;
              return next()
         }

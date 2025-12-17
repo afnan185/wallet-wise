@@ -6,46 +6,48 @@ import { Request, Response, NextFunction } from 'express';
 // const TRIP_Table = 'Trip';
 // const TRIP_MEMBER_TABLE = 'Member';
 
+
+
 //the properties of the new trip need to be updated with whatever we choose to include in our form or model
 const tripController = {
     async createTrip(req: Request, res: Response, next: NextFunction) { //Promise<void>{}
         try{
-            const {  name , createdBy, totalMembers, newTripMember } = req.body; //tripID, userID,
+            const { trip_name , total_members, created_by } = req.body; //tripID, userID,
 
             const { data, error } = await supabase //: newTripMember
             // .from(TABLE_NAME) //is the table name actually trips??
-            .from("Trip")
+            .from('Trip')
             .insert([
                 {
                     //auto gen a uuid
-                    name: name,//user_name: userName,// this might just be name
-                    createdBy: createdBy,//user_id: userID,// this might just be created by
+                    trip_name,//user_name: userName,// this might just be name
+                    total_members,
+                    created_by,//user_id: userID,// this might just be created by
                     // trip_id: tripID
-                    totalMembers: totalMembers,
             }])
             .select() //returns inserted records
+            .single();
 
-            if(error){
-                console.error('Supabase Insert Error:', error);
-                return next(error)
-            }
-            res.locals.newTrip = newTripMember ? newTripMember[0] : null;
+            if(error) return next(error);
+            
+            res.locals.newTrip = data;
             return next();
+
         } catch(err) {
             return next(err);
         }
     },
 
     //get from database
-    async  getMember (req: Request, res: Response, next: NextFunction) {
+    async  getTrip (req: Request, res: Response, next: NextFunction) {
         try{
-            const member = req.params.userName;
+            const { trip_id } = req.params;
             //supabase: .from('table').select().eq('column', 'value')
-            const {data: tripMembers, error } = await supabase
-            .from("Member")
+            const {data, error } = await supabase
+            .from('Trip')
             // .select('*, members (*)')
             .select('*')
-            .eq('user_name', member);
+            .eq('id', trip_id);
 
             if(error){
                 console.error('Supabase Select Error:', error);
