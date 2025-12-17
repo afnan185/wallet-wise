@@ -12,7 +12,7 @@ Trip Table: TripId(), Trip name(text), Total attendees(number)
 Expences Table: expence(text), Total(number), ppTotal(number) TripID(string), paidby?
 
 */
-export interface TripExpense {
+export interface Expense {
     id : string
     tripId: string
     total : number
@@ -20,18 +20,20 @@ export interface TripExpense {
     createdAt : string
 }
 
-export interface TripMember {
+export interface Member {
 id : string
 tripId : string
-userId : string
+memberName : string
+createdAt : string
 
 }
 
 // balance
-export interface TripBalance {
-    tripId : string
-    userId : string
-    amount : number
+export interface Balance {
+    id : string
+    expenseId : string
+    memberId : string
+    amountOwed : number
 }
 
 //settle up  interface

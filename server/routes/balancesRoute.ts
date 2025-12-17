@@ -13,8 +13,8 @@ const BalanceRouter = express.Router();
 //settle balances for a trip
 //POST /api/balances/settle/:tripId
 
- BalanceRouter .post('/settle', balanceController.settleBalance, (req, res) => {
-  return res.status(201).json(res.locals.settle);
-});
+//  BalanceRouter .post('/settle', balanceController.settleBalance, (req, res) => {
+//   return res.status(201).json(res.locals.settle);
+// });
 
 export default BalanceRouter;

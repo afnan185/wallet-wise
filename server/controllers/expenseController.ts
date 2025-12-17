@@ -3,24 +3,57 @@ import { Request, Response, NextFunction } from 'express';
 
 const expenseController = {
 
-    async  createExpense(req : Request, res : Response, next : NextFunction){
-       
+    async createExpense(req : Request, res : Response, next : NextFunction){
+       // when creating an expense we may need to think about how the expense was divided (i.e who owes what)
         try{
+            const { trip_id, total, paid_by, created_at} = req.body;
 
-            const { tripId, total, paidBy, createdAt, name } = req.body;
+            //ensure that all fields are filled out
+
+            if(!trip_id || !total || !paid_by || !created_at){
+                return res.status(400).json(`Missing Field. All fields are required!`)
+            }
     
             const {data, error} = await supabase
-            .from('expense')
-            .insert({
-                tripId,
-                total: total,
-                paidBy : paidBy,
-                createdAt : createdAt,
-                name: name
-            })
+            .from("Expense")
+            .insert ([{trip_id, total, paid_by, created_at}])
             .select()
-        } catch(err) {
+            .single();
 
+            if(error) return next(error);
+
+            res.locals.createExpense = data;
+
+            return next();
+
+        } catch(err) {
+            return next(err)
+        }
+        
+        
+    }
+
+     async getExpense(req : Request, res : Response, next : NextFunction){
+       // when creating an expense we may need to think about how the expense was divided (i.e who owes what)
+        try{
+            const { trip_id } = req.params;
+
+            //ensure that all fields are filled out
+
+    
+            const {data, error} = await supabase
+            .from("Expense")
+            .select("*")
+            .eq("trip_id", trip_id);
+
+            if(error) return next(error);
+
+            res.locals.getExpense = data;
+
+            return next();
+
+        } catch(err) {
+            return next(err)
         }
         
         

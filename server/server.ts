@@ -1,10 +1,11 @@
 import dotenv from "dotenv";
+dotenv.config();
 import express , {Request,Response, NextFunction} from 'express';
 import app from './app'
 
 
 
-dotenv.config();
+
 
 const PORT = process.env.PORT || 3000;
 

@@ -3,8 +3,8 @@ import supabase from '../utils/database';
 import { Request, Response, NextFunction } from 'express';
 
 //create a new trip in the Database, right now it just has the name property from our front end
-const TRIP_Table = 'Trip';
-const TRIP_MEMBER_TABLE = 'TripMember';
+// const TRIP_Table = 'Trip';
+// const TRIP_MEMBER_TABLE = 'Member';
 
 //the properties of the new trip need to be updated with whatever we choose to include in our form or model
 const tripController = {
@@ -14,7 +14,7 @@ const tripController = {
 
             const { data, error } = await supabase //: newTripMember
             // .from(TABLE_NAME) //is the table name actually trips??
-            .from(TRIP_Table)
+            .from("Trip")
             .insert([
                 {
                     name: name,//user_name: userName,// this might just be name
@@ -41,7 +41,7 @@ const tripController = {
             const member = req.params.userName;
             //supabase: .from('table').select().eq('column', 'value')
             const {data: tripMembers, error } = await supabase
-            .from(TRIP_MEMBER_TABLE)
+            .from("Member")
             // .select('*, members (*)')
             .select('*')
             .eq('user_name', member);
