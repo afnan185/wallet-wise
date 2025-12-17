@@ -11,6 +11,7 @@ const FirstPage = () => {
     <div>
       <div>
           <Form/>
+          
           <div className="flex justify-center">
             <Button 
             className="flex items-center gap-2 bg-[#3A7FE5] text-white px-4 py-2 rounded font-bold"

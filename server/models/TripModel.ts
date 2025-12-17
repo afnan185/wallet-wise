@@ -46,7 +46,7 @@ amount : number
 }
 */
 
-//split expense interface
+//split expense interface,
 /*
 export interface SplitExpense {
 id : string

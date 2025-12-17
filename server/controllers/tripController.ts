@@ -17,6 +17,7 @@ const tripController = {
             .from("Trip")
             .insert([
                 {
+                    //auto gen a uuid
                     name: name,//user_name: userName,// this might just be name
                     createdBy: createdBy,//user_id: userID,// this might just be created by
                     // trip_id: tripID
