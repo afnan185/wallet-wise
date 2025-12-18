@@ -36,7 +36,7 @@ const expenseController = {
      async getExpense(req : Request, res : Response, next : NextFunction){
        // when creating an expense we may need to think about how the expense was divided (i.e who owes what)
         try{
-            const { trip_id } = req.params;
+            const { tripId } = req.params;
 
             //ensure that all fields are filled out
 
@@ -44,7 +44,7 @@ const expenseController = {
             const {data, error} = await supabase
             .from("Expense")
             .select("*")
-            .eq("trip_id", trip_id);
+            .eq("trip_id", tripId);
 
             if(error) return next(error);
 

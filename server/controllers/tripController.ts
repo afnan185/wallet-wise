@@ -39,55 +39,25 @@ const tripController = {
     },
 
     //get from database
-    async  getTrip (req: Request, res: Response, next: NextFunction) {
-        try{
-            const { trip_id } = req.params;
-            //supabase: .from('table').select().eq('column', 'value')
-            const {data, error } = await supabase
-            .from('Trip')
-            // .select('*, members (*)')
-            .select('*')
-            .eq('id', trip_id);
+    async getTrip(req: Request, res: Response, next: NextFunction) {
+    try {
+      const { tripId } = req.params;
 
-            if(error){
-                console.error('Supabase Select Error:', error);
-                return next(error);
-            }
-            res.locals.trips = tripMembers;
-            return next();
-        } catch (err) {
-            return next(err);
-        }
-    },
-    //trying to find one and update... maybe a member we are updating? i don't even know
-    // async  updateTrip(req: Request, res: Response, next: NextFunction) {
-    //     try{
-    //         const { data: tripID, userName, userID } = req.params;
-    //         const { newTrip }
-    //         const newName = req.body.newName;
-    //         const updatedTrip = await Trip.findOneAndUpdate(
-    //             { name: currentName },
-    //             { name: newName },
-    //             { new: true }//return updated trip name, not the old one
-    //         );
+      const { data, error } = await supabase
+        .from('Trip')
+        .select('*')
+        .eq('id', tripId)
+        .single();
 
-    //         res.locals.updateTrip = updatedTrip; 
-    //         return next();
-    //     } catch (err) {
-    //         return next(err)
-    //     }
-    // }
-    async  getTrip (req: Request, res: Response, next: NextFunction){
-        const search = req.params.trip;
-      const { data: trip, error } = await supabase //find Trip table
-            // .from(TABLE_NAME) //is the table name actually trips??
-            .from(TRIP_Table)
-            .select('*')
-            .eq('Trip', search)
-    },
+      if (error) return next(error);
 
+      res.locals.trip = data;
+      return next();
+    } catch (err) {
+      return next(err);
+    }
+  },
 };
-
 
 // function updateTrip(req: any, Request: { new(input: RequestInfo | URL, init?: RequestInit): globalThis.Request; prototype: globalThis.Request; }, res: any, Response: { new(body?: BodyInit | null, init?: ResponseInit): globalThis.Response; prototype: globalThis.Response; error(): globalThis.Response; json(data: any, init?: ResponseInit): globalThis.Response; redirect(url: string | URL, status?: number): globalThis.Response; }, next: any, NextFunction: any) {
 //     throw new Error('Function not implemented.');

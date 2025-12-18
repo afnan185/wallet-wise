@@ -11,7 +11,7 @@ ExpensesRouter.post("/", expenseController.createExpense, (req, res) => {
 
 //get expenses for a trip
 ExpensesRouter.get("/:tripId", expenseController.getExpense, (req, res) => {
-  return res.status(200).json(res.locals.expense);
+  return res.status(200).json(res.locals.getExpense);
 });
 
 export default ExpensesRouter;
