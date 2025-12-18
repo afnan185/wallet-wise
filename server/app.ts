@@ -3,8 +3,14 @@ import tripRoute from './routes/tripRoute';
 import expenseRoute from './routes/expensesRoute'
 import balancesRoute from './routes/balancesRoute'
 import express , {Request,Response, NextFunction} from 'express';
+import cors from 'cors';
 
 const app = express();
+
+app.use(cors({
+  origin: 'http://localhost:5173',
+  credentials: true,
+}));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
